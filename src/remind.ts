@@ -12,28 +12,27 @@ const sendFromSheet = (sheetName: string) => {
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
-  const createRandomIndex = (numRows: number) => {
-    const randomIndices: number[] = []
-    while (randomIndices.length < numRows) {
-      const randomIndex = Math.floor(Math.random() * rowsData.length)
-      if (!randomIndices.includes(randomIndex)) {
-        randomIndices.push(randomIndex)
+  const createRandomIndex = (flag: string, limit: number): number => {
+    const filteredRows = rowsData.filter((row) => {
+      if (flag === 'max') {
+        if (typeof row.count === 'number') return row.count <= limit
+      } else if (flag === 'min') {
+        if (typeof row.count === 'number') return row.count > limit
       }
-    }
-    return randomIndices[numRows - 1]
+      return false
+    })
+    const randomIndex = Math.floor(Math.random() * filteredRows.length)
+    return rowsData.indexOf(filteredRows[randomIndex])
   }
   const { english: english1, japanese: japanese1 } =
-    rowsData[createRandomIndex(1)]
+    rowsData[createRandomIndex('max', 25)]
+  const { english: english2, japanese: japanese2 } =
+    rowsData[createRandomIndex('min', 25)]
 
   sendMessage(`■ ${english1}\n□ ${japanese1}`)
+  sendMessage(`■ ${english2}\n□ ${japanese2}`)
 }
 
-export const Term = () => {
-  sendFromSheet('Term')
-}
-export const Phrase = () => {
-  sendFromSheet('Phrase')
-}
-export const PenPhrase = () => {
-  sendFromSheet('PenPhrase')
+export const Main = () => {
+  sendFromSheet('Main')
 }

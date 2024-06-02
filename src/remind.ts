@@ -5,9 +5,7 @@ import type { RowsType } from './type'
 const sendFromSheet = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
   const sheet = activeSpreadsheet.getSheetByName(sheetName)
-  if (!sheet) {
-    throw new Error('Sheet not found')
-  }
+  if (!sheet) throw new Error('Sheet not found')
 
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
@@ -24,15 +22,21 @@ const sendFromSheet = (sheetName: string) => {
     const randomIndex = Math.floor(Math.random() * filteredRows.length)
     return rowsData.indexOf(filteredRows[randomIndex])
   }
-  const { english: english1, japanese: japanese1 } =
-    rowsData[createRandomIndex('max', 25)]
-  const { english: english2, japanese: japanese2 } =
-    rowsData[createRandomIndex('min', 25)]
-
-  sendMessage(`■ ${english1}\n□ ${japanese1}`)
-  sendMessage(`■ ${english2}\n□ ${japanese2}`)
+  const RandomShort = createRandomIndex('max', 25)
+  const RandomLong = createRandomIndex('min', 25)
+  if (RandomShort > 0) {
+    const { foreign: foreign1, japanese: japanese1 } = rowsData[RandomShort]
+    sendMessage(`■ ${foreign1}\n□ ${japanese1}`)
+  }
+  if (RandomLong > 0) {
+    const { foreign: foreign2, japanese: japanese2 } = rowsData[RandomLong]
+    sendMessage(`■ ${foreign2}\n□ ${japanese2}`)
+  }
 }
 
-export const Main = () => {
-  sendFromSheet('Main')
+export const English = () => {
+  sendFromSheet('English')
+}
+export const Tagalog = () => {
+  sendFromSheet('Tagalog')
 }

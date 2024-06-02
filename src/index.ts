@@ -1,7 +1,8 @@
-import { Main } from './remind'
+import { English, Tagalog } from './remind'
 
 declare const global: {
   [x: string]: unknown
 }
 
-global.Main = Main
+global.English = English
+global.Tagalog = Tagalog

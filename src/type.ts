@@ -1,5 +1,5 @@
 export type RowsType = {
-  english: string
+  foreign: string
   japanese: string
   count?: string
 }

@@ -1,8 +1,8 @@
 import type { RowsType } from './type'
 
 export const sheetHeader = [
-  'foreign',
-  'japanese',
+  'original',
+  'translation',
   'count',
   'frequency',
 ] as const

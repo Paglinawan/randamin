@@ -41,12 +41,14 @@ const sendFromSheet = (sheetName: string) => {
   const RandomShort = createRandomIndex('max', 25)
   const RandomLong = createRandomIndex('min', 25)
   if (RandomShort > 0) {
-    const { foreign: foreign1, japanese: japanese1 } = rowsData[RandomShort]
-    sendMessage(`■ ${foreign1}\n□ ${japanese1}`)
+    const { original: original1, translation: translation1 } =
+      rowsData[RandomShort]
+    sendMessage(`■ ${original1}\n□ ${translation1}`)
   }
   if (RandomLong > 0) {
-    const { foreign: foreign2, japanese: japanese2 } = rowsData[RandomLong]
-    sendMessage(`■ ${foreign2}\n□ ${japanese2}`)
+    const { original: original2, translation: translation2 } =
+      rowsData[RandomLong]
+    sendMessage(`■ ${original2}\n□ ${translation2}`)
   }
 }
 

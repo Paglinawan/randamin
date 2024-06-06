@@ -1,6 +1,11 @@
 import type { RowsType } from './type'
 
-export const sheetHeader = ['foreign', 'japanese', 'count'] as const
+export const sheetHeader = [
+  'foreign',
+  'japanese',
+  'count',
+  'frequency',
+] as const
 type sheetHeader = (typeof sheetHeader)[number]
 type sheetColumns = Record<sheetHeader, number>
 const isSheetHeader = (item: string): item is sheetHeader => {

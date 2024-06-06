@@ -19,9 +19,25 @@ const sendFromSheet = (sheetName: string) => {
       }
       return false
     })
-    const randomIndex = Math.floor(Math.random() * filteredRows.length)
-    return rowsData.indexOf(filteredRows[randomIndex])
+
+    // 重み付きランダム選択
+    const cumulativeFrequency: number[] = []
+    filteredRows.forEach((row, index) => {
+      const frequency = Number(row.frequency) || 1
+      const previousFrequency = cumulativeFrequency[index - 1] || 0
+      cumulativeFrequency.push(previousFrequency + frequency)
+    })
+
+    const totalFrequency = cumulativeFrequency[cumulativeFrequency.length - 1]
+    const randomValue = Math.random() * totalFrequency
+
+    const selectedIndex = cumulativeFrequency.findIndex(
+      (cumulativeFreq) => randomValue < cumulativeFreq,
+    )
+
+    return rowsData.indexOf(filteredRows[selectedIndex])
   }
+
   const RandomShort = createRandomIndex('max', 25)
   const RandomLong = createRandomIndex('min', 25)
   if (RandomShort > 0) {

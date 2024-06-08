@@ -5,6 +5,7 @@ export const sheetHeader = [
   'translation',
   'count',
   'frequency',
+  'done',
 ] as const
 type sheetHeader = (typeof sheetHeader)[number]
 type sheetColumns = Record<sheetHeader, number>
@@ -40,6 +41,8 @@ export const getRowsData = (
       const value = sheet.getRange(row, columnIndex).getValue()
       if (header === 'count' || header === 'frequency') {
         rowData[header] = typeof value === 'number' ? value : Number(value)
+      } else if (header === 'done') {
+        rowData[header] = typeof value === 'boolean' ? value : Boolean(value)
       } else {
         rowData[header] = value
       }

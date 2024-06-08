@@ -30,20 +30,21 @@ export const getRowsData = (
   sheet: GoogleAppsScript.Spreadsheet.Sheet,
   colIndex: sheetColumns,
 ): RowsType[] => {
-  const data = []
+  const data: RowsType[] = []
   const lastRow = sheet.getLastRow()
   const headers = Object.keys(colIndex) as sheetHeader[]
   for (let row = 2; row <= lastRow; row++) {
-    const rowData: Record<sheetHeader, string> = {} as Record<
-      sheetHeader,
-      string
-    >
+    const rowData: Partial<RowsType> = {}
     headers.forEach((header) => {
       const columnIndex = colIndex[header] + 1
       const value = sheet.getRange(row, columnIndex).getValue()
-      rowData[header] = value
+      if (header === 'count' || header === 'frequency') {
+        rowData[header] = typeof value === 'number' ? value : Number(value)
+      } else {
+        rowData[header] = value
+      }
     })
-    data.push(rowData)
+    data.push(rowData as RowsType)
   }
   return data
 }

@@ -1,6 +1,7 @@
 export type RowsType = {
   original: string
   translation: string
-  count?: string
-  frequency?: string
+  count?: number
+  frequency?: number
+  done?: boolean
 }

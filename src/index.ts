@@ -1,5 +1,5 @@
-import { DeleteRowEnglish } from './archive'
-import { English, Tagalog } from './remind'
+import { DeleteRowEnglish } from './languages/archive'
+import { English, Tagalog } from './languages'
 
 declare const global: {
   [x: string]: unknown

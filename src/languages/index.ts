@@ -1,6 +1,12 @@
 import { getColsIndex, getRowsData } from './spreadsheet'
-import { sendMessage } from './line'
-import type { RowsType } from './type'
+import { sendMessage } from '../hooks/line'
+type RowsType = {
+  original: string
+  translation: string
+  count: number
+  frequency: number
+  done: boolean
+}
 
 const sendFromSheet = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
@@ -12,11 +18,8 @@ const sendFromSheet = (sheetName: string) => {
 
   const createRandomIndex = (flag: string, limit: number): number => {
     const filteredRows = rowsData.filter((row) => {
-      if (flag === 'max') {
-        if (typeof row.count === 'number') return row.count <= limit
-      } else if (flag === 'min') {
-        if (typeof row.count === 'number') return row.count > limit
-      }
+      if (flag === 'max') return row.count <= limit
+      if (flag === 'min') return row.count > limit
       return false
     })
 
@@ -38,8 +41,8 @@ const sendFromSheet = (sheetName: string) => {
     return rowsData.indexOf(filteredRows[selectedIndex])
   }
 
-  const RandomShort = createRandomIndex('max', 25)
-  const RandomLong = createRandomIndex('min', 25)
+  const RandomShort = createRandomIndex('max', 40)
+  const RandomLong = createRandomIndex('min', 40)
   if (RandomShort > 0) {
     const { original: original1, translation: translation1 } =
       rowsData[RandomShort]

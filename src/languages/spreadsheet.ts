@@ -1,4 +1,10 @@
-import type { RowsType } from './type'
+type RowsType = {
+  original: string
+  translation: string
+  count: number
+  frequency: number
+  done: boolean
+}
 
 export const sheetHeader = [
   'original',
@@ -39,13 +45,7 @@ export const getRowsData = (
     headers.forEach((header) => {
       const columnIndex = colIndex[header] + 1
       const value = sheet.getRange(row, columnIndex).getValue()
-      if (header === 'count' || header === 'frequency') {
-        rowData[header] = typeof value === 'number' ? value : Number(value)
-      } else if (header === 'done') {
-        rowData[header] = typeof value === 'boolean' ? value : Boolean(value)
-      } else {
-        rowData[header] = value
-      }
+      rowData[header] = value
     })
     data.push(rowData as RowsType)
   }

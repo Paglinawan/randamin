@@ -1,5 +1,11 @@
 import { getColsIndex, getRowsData } from './spreadsheet'
-import type { RowsType } from './type'
+type RowsType = {
+  original: string
+  translation: string
+  count: number
+  frequency: number
+  done: boolean
+}
 
 const DeleteRow = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()

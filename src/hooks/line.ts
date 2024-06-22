@@ -1,7 +1,8 @@
+import { FlexMessage } from '@line/bot-sdk'
 const prop = PropertiesService.getScriptProperties().getProperties()
 const CHANEL_ACCESS_TOKEN = prop.CHANEL_ACCESS_TOKEN
 
-export const sendMessage = (messages: string) => {
+export const sendMessage = (messages: FlexMessage[]) => {
   const ENDPOINT_URL = 'https://api.line.me/v2/bot/message/broadcast'
   const options = {
     headers: {
@@ -9,12 +10,7 @@ export const sendMessage = (messages: string) => {
       Authorization: 'Bearer ' + CHANEL_ACCESS_TOKEN,
     },
     payload: JSON.stringify({
-      messages: [
-        {
-          type: 'text',
-          text: messages,
-        },
-      ],
+      messages,
     }),
   }
   return UrlFetchApp.fetch(ENDPOINT_URL, options)

@@ -1,3 +1,4 @@
+import createCard from './layout'
 import { getColsIndex, getRowsData } from './spreadsheet'
 import { sendMessage } from '../hooks/line'
 type RowsType = {
@@ -31,13 +32,8 @@ const sendFromSheet = (sheetName: string) => {
   }
   const { label, concept, example, url } = rowsData[createRandomIndex(1)]
 
-  let message = `■ ${label}\n${concept}`
-  if (example) message += `\n${example}`
-  if (url) message += `\n${url}`
-
-  sendMessage(message)
+  const cards = createCard([{ label, concept, example, url }])
+  sendMessage(cards)
 }
 
-export const Words = () => {
-  sendFromSheet('Words')
-}
+export const Words = () => sendFromSheet('Words')

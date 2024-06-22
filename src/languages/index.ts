@@ -1,3 +1,4 @@
+import createCard from './layout'
 import { getColsIndex, getRowsData } from './spreadsheet'
 import { sendMessage } from '../hooks/line'
 type RowsType = {
@@ -43,21 +44,12 @@ const sendFromSheet = (sheetName: string) => {
 
   const RandomShort = createRandomIndex('max', 40)
   const RandomLong = createRandomIndex('min', 40)
-  if (RandomShort > 0) {
-    const { original: original1, translation: translation1 } =
-      rowsData[RandomShort]
-    sendMessage(`■ ${original1}\n□ ${translation1}`)
-  }
-  if (RandomLong > 0) {
-    const { original: original2, translation: translation2 } =
-      rowsData[RandomLong]
-    sendMessage(`■ ${original2}\n□ ${translation2}`)
-  }
+  let data: { original: string; translation: string }[] = []
+  if (RandomShort > 0) data.push(rowsData[RandomShort])
+  if (RandomLong > 0) data.push(rowsData[RandomLong])
+  const cards = createCard(data)
+  sendMessage(cards)
 }
 
-export const English = () => {
-  sendFromSheet('English')
-}
-export const Tagalog = () => {
-  sendFromSheet('Tagalog')
-}
+export const English = () => sendFromSheet('English')
+export const Tagalog = () => sendFromSheet('Tagalog')

@@ -20,19 +20,14 @@ const sendFromSheet = (sheetName: string) => {
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
-  const createRandomIndex = (numRows: number) => {
-    const randomIndices: number[] = []
-    while (randomIndices.length < numRows) {
-      const randomIndex = Math.floor(Math.random() * rowsData.length)
-      if (!randomIndices.includes(randomIndex)) {
-        randomIndices.push(randomIndex)
-      }
-    }
-    return randomIndices[numRows - 1]
+  let data: { label: string; concept: string; example: string; url: string }[] =
+    []
+  const loopTime = 3
+  for (let i = 0; i < loopTime; i++) {
+    const randomIndex = Math.floor(Math.random() * rowsData.length)
+    data.push(rowsData[randomIndex])
   }
-  const { label, concept, example, url } = rowsData[createRandomIndex(1)]
-
-  const cards = createCard([{ label, concept, example, url }])
+  const cards = createCard(data)
   sendMessage(cards)
 }
 

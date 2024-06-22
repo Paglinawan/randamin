@@ -42,11 +42,14 @@ const sendFromSheet = (sheetName: string) => {
     return rowsData.indexOf(filteredRows[selectedIndex])
   }
 
-  const RandomShort = createRandomIndex('max', 40)
-  const RandomLong = createRandomIndex('min', 40)
   let data: { original: string; translation: string }[] = []
-  if (RandomShort > 0) data.push(rowsData[RandomShort])
-  if (RandomLong > 0) data.push(rowsData[RandomLong])
+  const loopTime = 3
+  for (let i = 0; i < loopTime; i++) {
+    const RandomShort = createRandomIndex('max', 40)
+    const RandomLong = createRandomIndex('min', 40)
+    if (RandomShort > 0) data.push(rowsData[RandomShort])
+    if (RandomLong > 0) data.push(rowsData[RandomLong])
+  }
   const cards = createCard(data)
   sendMessage(cards)
 }

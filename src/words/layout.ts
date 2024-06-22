@@ -86,7 +86,7 @@ const createCard = (
   return [
     {
       type: 'flex',
-      altText: 'Flex Message',
+      altText: `${data[0].label} : ${data[0].concept}`,
       contents: {
         type: 'carousel',
         contents,

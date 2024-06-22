@@ -51,7 +51,7 @@ const createCard = (
   return [
     {
       type: 'flex',
-      altText: 'Flex Message',
+      altText: `${data[0].original} : ${data[0].translation}`,
       contents: {
         type: 'carousel',
         contents,

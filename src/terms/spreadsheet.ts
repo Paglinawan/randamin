@@ -17,9 +17,8 @@ export const sheetHeader = [
 ] as const
 type sheetHeader = (typeof sheetHeader)[number]
 type sheetColumns = Record<sheetHeader, number>
-const isSheetHeader = (item: string): item is sheetHeader => {
-  return sheetHeader.some((type) => type === item)
-}
+const isSheetHeader = (item: string): item is sheetHeader =>
+  sheetHeader.some((type) => type === item)
 
 export const getColsIndex = (
   sheet: GoogleAppsScript.Spreadsheet.Sheet,

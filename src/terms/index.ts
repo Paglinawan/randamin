@@ -10,25 +10,30 @@ type RowsType = {
   done: boolean
 }
 
-const sendFromSheet = (sheetName: string) => {
+const sendTerms = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
   const sheet = activeSpreadsheet.getSheetByName(sheetName)
-  if (!sheet) {
-    throw new Error('Sheet not found')
-  }
+  if (!sheet) throw new Error('シートが見つかりません')
 
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
   let data: { label: string; concept: string; example: string; url: string }[] =
     []
-  const loopTime = 3
-  for (let i = 0; i < loopTime; i++) {
+  const numLoops = 3
+  const indices: Set<number> = new Set()
+
+  while (indices.size < numLoops) {
     const randomIndex = Math.floor(Math.random() * rowsData.length)
-    data.push(rowsData[randomIndex])
+    indices.add(randomIndex)
   }
+
+  indices.forEach((index) => {
+    data.push(rowsData[index])
+  })
+
   const cards = createCard(data)
   sendMessage(cards)
 }
 
-export const Words = () => sendFromSheet('Words')
+export const sendOtherWords = () => sendTerms('OtherWords')

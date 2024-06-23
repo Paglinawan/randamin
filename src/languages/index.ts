@@ -9,50 +9,51 @@ type RowsType = {
   done: boolean
 }
 
-const sendFromSheet = (sheetName: string) => {
+const sendLanguages = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
   const sheet = activeSpreadsheet.getSheetByName(sheetName)
-  if (!sheet) throw new Error('Sheet not found')
+  if (!sheet) throw new Error('シートが見つかりません')
 
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
-  const createRandomIndex = (flag: string, limit: number): number => {
+  const createRandomIndices = (
+    flag: string,
+    limit: number,
+    count: number,
+  ): number[] => {
     const filteredRows = rowsData.filter((row) => {
       if (flag === 'max') return row.count <= limit
       if (flag === 'min') return row.count > limit
       return false
     })
 
-    // 重み付きランダム選択
-    const cumulativeFrequency: number[] = []
-    filteredRows.forEach((row, index) => {
-      const frequency = Number(row.frequency) || 1
-      const previousFrequency = cumulativeFrequency[index - 1] || 0
-      cumulativeFrequency.push(previousFrequency + frequency)
-    })
+    const indicesSet = new Set<number>()
+    while (indicesSet.size < count && indicesSet.size < filteredRows.length) {
+      const randomIndex = Math.floor(Math.random() * filteredRows.length)
+      indicesSet.add(rowsData.indexOf(filteredRows[randomIndex]))
+    }
 
-    const totalFrequency = cumulativeFrequency[cumulativeFrequency.length - 1]
-    const randomValue = Math.random() * totalFrequency
-
-    const selectedIndex = cumulativeFrequency.findIndex(
-      (cumulativeFreq) => randomValue < cumulativeFreq,
-    )
-
-    return rowsData.indexOf(filteredRows[selectedIndex])
+    return Array.from(indicesSet)
   }
 
-  let data: { original: string; translation: string }[] = []
-  const loopTime = 3
-  for (let i = 0; i < loopTime; i++) {
-    const RandomShort = createRandomIndex('max', 40)
-    const RandomLong = createRandomIndex('min', 40)
-    if (RandomShort > 0) data.push(rowsData[RandomShort])
-    if (RandomLong > 0) data.push(rowsData[RandomLong])
-  }
+  const numLoops = 3
+  const shortIndices = createRandomIndices('max', 40, numLoops)
+  const longIndices = createRandomIndices('min', 40, numLoops)
+
+  const data: { original: string; translation: string }[] = []
+
+  shortIndices.forEach((index) => {
+    if (index >= 0) data.push(rowsData[index])
+  })
+
+  longIndices.forEach((index) => {
+    if (index >= 0) data.push(rowsData[index])
+  })
+
   const cards = createCard(data)
   sendMessage(cards)
 }
 
-export const English = () => sendFromSheet('English')
-export const Tagalog = () => sendFromSheet('Tagalog')
+export const sendEnglish = () => sendLanguages('English')
+export const sendTagalog = () => sendLanguages('Tagalog')

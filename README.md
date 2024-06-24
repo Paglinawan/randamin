@@ -24,9 +24,9 @@ LINEの[Messaging API↗︎](https://developers.line.biz/ja/reference/messaging-
 - frequencyの数値で出現頻度を調整
 - `Archive` : Languagesのdoneにチェックを入れると指定のシートにアーカイブする
 
-### `Words`
+### `Terms`
 
-- label、concept、exampleの内容をランダムで6件通知
+- label、concept、exampleの内容をランダムで3件通知
 - frequencyの数値で出現頻度を調整
 - urlに入力があればボタンを表示
 

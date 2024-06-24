@@ -1,5 +1,8 @@
 # Randamin
 
+![Header](https://github.com/Paglinawan/randamin/assets/32391651/e03b5074-072d-4b79-9500-74d28cca9387)
+
+
 ## ❶ Problems
 
 - 学習が続かない
@@ -33,7 +36,9 @@ LINEの[Messaging API↗︎](https://developers.line.biz/ja/reference/messaging-
 
 - [Googleスプレッドシートのテンプレート](https://docs.google.com/spreadsheets/d/1gvkHueOvBdrJow6jNVe9d_tPnGZdXAA_4n2brbUnKko/edit?usp=sharing)
   - 表示形式 > テーマでカラーテーマを変更できます
+- [Messaging APIリファレンス](https://developers.line.biz/ja/reference/messaging-api/)
+- [FLEX MESSAGE SIMULATOR](https://developers.line.biz/flex-simulator)
 - 【GAS中級編】TSで書くLINE Botハンズオン！【BOT AWARDS 2024】
   - [YouTube](https://www.youtube.com/watch?v=y_OWTt5E_OE)
   - [Notion](https://minakoph.notion.site/GAS-TS-LINE-Bot-BOT-AWARDS-2024-653b26d50a33430f9283a66839d27704)
-- [【JS】ガチで学びたい人のためのJavaScriptメカニズム | Udemy](https://www.udemy.com/course/javascript-essence/)
+- [Node.jsで学ぶWebシステムとソフトウェア開発基礎！Node.js完全入門ガイド | Udemy](https://www.udemy.com/share/107wK1/)

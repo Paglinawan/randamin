@@ -1,10 +1,7 @@
 import { FlexMessage, FlexBubble } from '@line/bot-sdk'
-const createCard = (
-  data: {
-    original: string
-    translation: string
-  }[],
-): FlexMessage[] => {
+import { RowsType } from './types'
+
+const createCard = (data: RowsType[]): FlexMessage[] => {
   const contents: FlexBubble[] = data.map(({ original, translation }) => ({
     type: 'bubble',
     size: 'kilo',

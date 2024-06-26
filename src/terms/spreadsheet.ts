@@ -1,11 +1,4 @@
-type RowsType = {
-  label: string
-  concept: string
-  example: string
-  url: string
-  frequency: number
-  done: boolean
-}
+import { RowsType } from './types'
 
 export const sheetHeader = [
   'label',

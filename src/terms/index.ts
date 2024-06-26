@@ -1,14 +1,7 @@
 import createCard from './layout'
 import { getColsIndex, getRowsData } from './spreadsheet'
 import { sendMessage } from '../hooks/line'
-type RowsType = {
-  label: string
-  concept: string
-  example: string
-  url: string
-  frequency: number
-  done: boolean
-}
+import { RowsType } from './types'
 
 const sendTerms = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
@@ -18,8 +11,7 @@ const sendTerms = (sheetName: string) => {
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
-  let data: { label: string; concept: string; example: string; url: string }[] =
-    []
+  let data: RowsType[] = []
   const numLoops = 3
   const indices: Set<number> = new Set()
 

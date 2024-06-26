@@ -1,13 +1,7 @@
 import createCard from './layout'
 import { getColsIndex, getRowsData } from './spreadsheet'
 import { sendMessage } from '../hooks/line'
-type RowsType = {
-  original: string
-  translation: string
-  count: number
-  frequency: number
-  done: boolean
-}
+import { RowsType } from './types'
 
 const sendLanguages = (sheetName: string) => {
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
@@ -41,7 +35,7 @@ const sendLanguages = (sheetName: string) => {
   const shortIndices = createRandomIndices('max', 40, numLoops)
   const longIndices = createRandomIndices('min', 40, numLoops)
 
-  const data: { original: string; translation: string }[] = []
+  const data: RowsType[] = []
 
   shortIndices.forEach((index) => {
     if (index >= 0) data.push(rowsData[index])

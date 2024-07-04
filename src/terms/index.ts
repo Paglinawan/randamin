@@ -11,18 +11,23 @@ const sendTerms = (sheetName: string) => {
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
+  const filteredRowsData = rowsData.filter((row) => !row.done)
+
   let data: RowsType[] = []
   const numLoops = 3
 
-  const totalWeight = rowsData.reduce((sum, row) => sum + row.frequency, 0)
+  const totalWeight = filteredRowsData.reduce(
+    (sum, row) => sum + row.frequency,
+    0,
+  )
 
   const getRandomIndex = () => {
     let randomValue = Math.random() * totalWeight
-    for (let i = 0; i < rowsData.length; i++) {
-      randomValue -= rowsData[i].frequency
+    for (let i = 0; i < filteredRowsData.length; i++) {
+      randomValue -= filteredRowsData[i].frequency
       if (randomValue <= 0) return i
     }
-    return rowsData.length - 1
+    return filteredRowsData.length - 1
   }
 
   const indices: Set<number> = new Set()
@@ -33,7 +38,7 @@ const sendTerms = (sheetName: string) => {
   }
 
   indices.forEach((index) => {
-    data.push(rowsData[index])
+    data.push(filteredRowsData[index])
   })
 
   const cards = createCard(data)

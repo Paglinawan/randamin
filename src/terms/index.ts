@@ -13,10 +13,22 @@ const sendTerms = (sheetName: string) => {
 
   let data: RowsType[] = []
   const numLoops = 3
+
+  const totalWeight = rowsData.reduce((sum, row) => sum + row.frequency, 0)
+
+  const getRandomIndex = () => {
+    let randomValue = Math.random() * totalWeight
+    for (let i = 0; i < rowsData.length; i++) {
+      randomValue -= rowsData[i].frequency
+      if (randomValue <= 0) return i
+    }
+    return rowsData.length - 1
+  }
+
   const indices: Set<number> = new Set()
 
   while (indices.size < numLoops) {
-    const randomIndex = Math.floor(Math.random() * rowsData.length)
+    const randomIndex = getRandomIndex()
     indices.add(randomIndex)
   }
 

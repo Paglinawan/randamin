@@ -1,6 +1,4 @@
-# Randamin
-
-![Header](https://github.com/Paglinawan/randamin/assets/32391651/e03b5074-072d-4b79-9500-74d28cca9387)
+![Header](https://github.com/user-attachments/assets/6920bf65-e87c-4246-81f7-df0e67709b98)
 
 ## ❶ Problems
 

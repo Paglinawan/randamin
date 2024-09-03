@@ -13,36 +13,29 @@ const createCard = (data: RowsType[]): FlexMessage[] => {
           {
             type: 'text',
             text: label,
-            color: '#ffffff',
-            align: 'start',
-            size: 'md',
-            gravity: 'center',
+            weight: 'bold',
+            size: 'lg',
             wrap: true,
+            color: '#333333',
           },
-        ],
-        backgroundColor: '#00ADA9',
-        spacing: 'none',
-      },
-      body: {
-        type: 'box',
-        layout: 'vertical',
-        contents: [
           {
             type: 'box',
-            layout: 'horizontal',
+            layout: 'vertical',
             contents: [
               {
                 type: 'text',
                 text: concept,
-                color: '#8C8C8C',
-                size: 'sm',
+                color: '#999999',
+                size: 'xxs',
                 wrap: true,
               },
             ],
-            flex: 1,
+            paddingTop: 'md',
           },
         ],
-        spacing: 'none',
+        paddingStart: 'xl',
+        paddingEnd: 'xl',
+        paddingBottom: 'none',
       },
     }
 
@@ -57,17 +50,14 @@ const createCard = (data: RowsType[]): FlexMessage[] => {
               type: 'button',
               action: {
                 type: 'uri',
-                label: '参考',
+                label: 'MORE',
                 uri: url,
               },
-              color: '#00ADA9',
+              height: 'sm',
+              style: 'secondary',
             },
           ],
-        },
-        styles: {
-          footer: {
-            separator: true,
-          },
+          paddingAll: 'md',
         },
       }
     }

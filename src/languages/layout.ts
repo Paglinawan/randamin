@@ -12,37 +12,27 @@ const createCard = (data: RowsType[]): FlexMessage[] => {
         {
           type: 'text',
           text: original,
-          color: '#00ADA9',
-          align: 'start',
-          size: 'md',
-          gravity: 'center',
+          weight: 'bold',
+          size: 'lg',
           wrap: true,
+          color: '#00ADA9',
         },
-      ],
-      backgroundColor: '#ffffff',
-      spacing: 'none',
-    },
-    body: {
-      type: 'box',
-      layout: 'vertical',
-      contents: [
         {
           type: 'box',
-          layout: 'horizontal',
+          layout: 'vertical',
           contents: [
             {
               type: 'text',
               text: translation,
-              color: '#8C8C8C',
-              size: 'sm',
+              color: '#999999',
+              size: 'xxs',
               wrap: true,
             },
           ],
-          flex: 1,
+          paddingTop: 'md',
         },
       ],
-      spacing: 'none',
-      paddingBottom: '30px',
+      paddingAll: 'xl',
     },
   }))
   return [

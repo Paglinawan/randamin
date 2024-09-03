@@ -11,38 +11,34 @@ const sendLanguages = (sheetName: string) => {
   const colsIndex = getColsIndex(sheet)
   const rowsData: RowsType[] = getRowsData(sheet, colsIndex)
 
-  const createRandomIndices = (
-    flag: string,
-    limit: number,
-    count: number,
-  ): number[] => {
-    const filteredRows = rowsData.filter((row) => {
-      if (flag === 'max') return row.count <= limit
-      if (flag === 'min') return row.count > limit
-      return false
-    })
+  const filteredRowsData = rowsData.filter((row) => !row.done)
 
-    const indicesSet = new Set<number>()
-    while (indicesSet.size < count && indicesSet.size < filteredRows.length) {
-      const randomIndex = Math.floor(Math.random() * filteredRows.length)
-      indicesSet.add(rowsData.indexOf(filteredRows[randomIndex]))
+  let data: RowsType[] = []
+  const numLoops = 6
+
+  const totalWeight = filteredRowsData.reduce(
+    (sum, row) => sum + row.frequency,
+    0,
+  )
+
+  const getRandomIndex = () => {
+    let randomValue = Math.random() * totalWeight
+    for (let i = 0; i < filteredRowsData.length; i++) {
+      randomValue -= filteredRowsData[i].frequency
+      if (randomValue <= 0) return i
     }
-
-    return Array.from(indicesSet)
+    return filteredRowsData.length - 1
   }
 
-  const numLoops = 3
-  const shortIndices = createRandomIndices('max', 40, numLoops)
-  const longIndices = createRandomIndices('min', 40, numLoops)
+  const indices: Set<number> = new Set()
 
-  const data: RowsType[] = []
+  while (indices.size < numLoops) {
+    const randomIndex = getRandomIndex()
+    indices.add(randomIndex)
+  }
 
-  shortIndices.forEach((index) => {
-    if (index >= 0) data.push(rowsData[index])
-  })
-
-  longIndices.forEach((index) => {
-    if (index >= 0) data.push(rowsData[index])
+  indices.forEach((index) => {
+    data.push(filteredRowsData[index])
   })
 
   const cards = createCard(data)

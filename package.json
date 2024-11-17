@@ -1,0 +1,31 @@
+{
+  "name": "clasp-ts-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "push": "yarn build && clasp push",
+    "run:main": "yarn push && clasp run main && clasp logs",
+    "deploy": "bash bin/deploy.sh",
+    "logs": "clasp logs",
+    "open": "clasp open"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-typescript": "^7.24.1",
+    "@google/clasp": "^2.4.2",
+    "@types/babel__core": "^7.20.5",
+    "@types/google-apps-script": "^1.0.82",
+    "@types/prettier": "^3.0.0",
+    "babel-loader": "^9.1.3",
+    "gas-webpack-plugin": "^2.5.0",
+    "typescript": "^4.3.2",
+    "typesync": "^0.12.1",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^9.2.2"
+  }
+}

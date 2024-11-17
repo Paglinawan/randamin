@@ -1,0 +1,11 @@
+.DS_Store
+.yarn
+bin
+dist/*.js
+node_modules
+src/Post
+src/Tech
+src/TechMessages
+.clasp.json
+package-lock.json
+yarn.lock

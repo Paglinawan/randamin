@@ -1,4 +1,4 @@
-![README](https://github.com/user-attachments/assets/c76da5f1-9ca3-4657-8132-592ead75c37c)
+![README](https://github.com/user-attachments/assets/504c3513-9c31-4e5a-ba5f-a6a60a058921)
 
 ## ❑ Resources
 

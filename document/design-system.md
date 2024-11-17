@@ -1,7 +1,7 @@
 ## ❖ Primitive Colors
 
-![primitive-colors](https://github.com/user-attachments/assets/3de25e79-bce0-4f25-82b8-1b034656897f)
+![primitive-colors](https://github.com/user-attachments/assets/b7f08896-7235-4a14-b97e-c2ac040667f9)
 
 ## ❖ Semantic Colors
 
-![semantic-colors](https://github.com/user-attachments/assets/68270689-1de0-4601-85ca-3b6c21c1a486)
+![semantic-colors](https://github.com/user-attachments/assets/a4c57c43-059b-40ac-abdc-7331b236e130)

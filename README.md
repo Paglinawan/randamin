@@ -15,7 +15,7 @@
 3. `yarn install` ※1
 4. `yarn clasp login`
 5. `yarn clasp create` > sheets を選択
-6. `rm appscript.json`
+6. `rm appsscript.json`
 7. `code .clasp.json` もしくは`open .clasp.json`でファイルを開きコードを追加
 
 ```

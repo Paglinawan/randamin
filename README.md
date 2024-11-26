@@ -8,7 +8,7 @@
 
 <br>
 
-## ❑ Steps to Clone This Repository
+## ❑ How to Clone
 
 1. [LINE Developers](https://developers.line.biz/console/)でチャンネルを作成
 2. クローン

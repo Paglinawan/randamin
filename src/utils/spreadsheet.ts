@@ -3,26 +3,20 @@ type DataType = { id: number; [key: string]: string | number | boolean }
 const getSheetData = (sheetName: string) => {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName)
   if (!sheet) throw new Error('シートが見つかりません')
-  const range = sheet.getDataRange()
-  const values = range.getValues()
+  const allRows = sheet.getDataRange().getValues()
+  const header = allRows[0]
 
-  const headers = values[0]
-  const data: DataType[] = []
-
-  for (let i = 0; i < values.length; i++) {
-    const row = values[i]
-    const obj: DataType = {
-      id: i + 1,
-    }
-
-    for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = row[j]
-    }
-
-    data.push(obj)
+  const items: DataType[] = []
+  let item: DataType
+  for (let i = 1; i < allRows.length; i++) {
+    const dataRow = allRows[i]
+    item = { id: i }
+    header.forEach((headerName, i) => {
+      item[headerName] = dataRow[i]
+    })
+    items.push(item)
   }
-
-  return data
+  return items
 }
 
 export default getSheetData

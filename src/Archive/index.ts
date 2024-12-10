@@ -1,4 +1,4 @@
-import getSheetData from '../hooks/spreadsheet'
+import getSheetData from '../utils/spreadsheet'
 
 const archiveRow = (originalSheetName: string, archiveSheetName: string) => {
   const sheetData = getSheetData(originalSheetName)

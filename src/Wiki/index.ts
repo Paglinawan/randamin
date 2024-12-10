@@ -1,6 +1,6 @@
-import getSheetData from '../hooks/spreadsheet'
-import getRandomIds from '../hooks/getRandomIds'
-import { sendMessage } from '../hooks/line'
+import getSheetData from '../utils/spreadsheet'
+import getRandomIds from '../utils/getRandomIds'
+import { sendMessage } from '../utils/line'
 import createCard from './layout'
 
 const getWiki = (sheetName: string) => {

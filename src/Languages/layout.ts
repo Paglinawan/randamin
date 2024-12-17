@@ -3,7 +3,7 @@ import { textStyle } from '../constants/semantic-colors'
 type DataType = { id: number; [key: string]: string | number | boolean }
 
 const createCard = (data: DataType[]): FlexMessage[] => {
-  const contents: FlexBubble[] = data.map(({ original, translation }) => ({
+  const contents: FlexBubble[] = data.map(({ id, original, translation }) => ({
     type: 'bubble',
     size: 'kilo',
     header: {
@@ -35,7 +35,28 @@ const createCard = (data: DataType[]): FlexMessage[] => {
       ],
       paddingAll: 'xl',
     },
+    footer: {
+      type: 'box',
+      layout: 'vertical',
+      contents: [
+        {
+          type: 'button',
+          style: 'secondary',
+          action: {
+            type: 'postback',
+            label: '✔️',
+            data: JSON.stringify({ action: 'checkedDone', row: id }),
+          },
+          color: '#e8e8e8',
+          height: 'sm',
+        },
+      ],
+      alignItems: 'flex-end',
+      paddingTop: '0px',
+      paddingStart: '0px',
+    },
   }))
+
   return [
     {
       type: 'flex',

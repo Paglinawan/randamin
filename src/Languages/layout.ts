@@ -45,7 +45,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
           action: {
             type: 'postback',
             label: '✔️',
-            data: JSON.stringify({ action: 'checkedDone', row: id }),
+            data: String(id + 1),
           },
           color: '#e8e8e8',
           height: 'sm',

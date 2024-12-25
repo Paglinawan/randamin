@@ -15,12 +15,3 @@ export const sendMessage = (messages: FlexMessage[]) => {
   }
   return UrlFetchApp.fetch(ENDPOINT_URL, options)
 }
-export const getMessageText = (EVENTS: any[]) => {
-  for (const event of EVENTS) {
-    if (!event.message.text) return
-    return event.message.text
-  }
-}
-export const getPostData = (EVENTS: any[]) => {
-  return JSON.parse(EVENTS[0].postback.data)
-}

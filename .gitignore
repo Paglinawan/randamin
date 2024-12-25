@@ -3,7 +3,8 @@
 bin
 dist/*.js
 node_modules
-src/Post
+src/Post/*
+!src/Post/index.ts
 src/Tech
 src/TechMessages
 .clasp.json

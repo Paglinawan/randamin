@@ -6,54 +6,86 @@ const createCard = (data: DataType[]): FlexMessage[] => {
   const contents: FlexBubble[] = data.map(({ id, original, translation }) => ({
     type: 'bubble',
     size: 'kilo',
-    header: {
+    body: {
       type: 'box',
       layout: 'vertical',
       contents: [
         {
           type: 'text',
           text: String(original),
-          weight: 'bold',
           size: 'lg',
-          wrap: true,
           color: textStyle.light.primary,
+          weight: 'bold',
+          wrap: true,
         },
         {
-          type: 'box',
-          layout: 'vertical',
-          contents: [
-            {
-              type: 'text',
-              text: String(translation),
-              color: textStyle.light.gray,
-              size: 'xxs',
-              wrap: true,
-            },
-          ],
-          paddingTop: 'md',
+          type: 'text',
+          text: String(translation),
+          size: 'xxs',
+          color: textStyle.light.gray,
+          wrap: true,
         },
       ],
-      paddingAll: 'xl',
+      paddingTop: '12px',
+      paddingBottom: '8px',
+      paddingStart: '16px',
+      paddingEnd: '16px',
+      spacing: 'sm',
     },
     footer: {
       type: 'box',
       layout: 'vertical',
       contents: [
         {
-          type: 'button',
-          style: 'secondary',
-          action: {
-            type: 'postback',
-            label: '✔️',
-            data: String(id + 1),
-          },
-          color: '#e8e8e8',
-          height: 'sm',
+          type: 'box',
+          layout: 'horizontal',
+          contents: [
+            {
+              type: 'button',
+              action: {
+                type: 'postback',
+                label: '▼',
+                data: JSON.stringify({
+                  type: 'lowerVisibility',
+                  currentId: id + 1,
+                }),
+              },
+              style: 'secondary',
+              height: 'sm',
+            },
+            {
+              type: 'button',
+              action: {
+                type: 'postback',
+                label: '▲',
+                data: JSON.stringify({
+                  type: 'raiseVisibility',
+                  currentId: id + 1,
+                }),
+              },
+              style: 'secondary',
+              height: 'sm',
+            },
+            {
+              type: 'button',
+              action: {
+                type: 'postback',
+                data: JSON.stringify({ type: 'Done', currentId: id + 1 }),
+                label: '✔',
+              },
+              style: 'secondary',
+              height: 'sm',
+            },
+          ],
+          maxWidth: '180px',
+          spacing: 'md',
         },
       ],
       alignItems: 'flex-end',
-      paddingTop: '0px',
-      paddingStart: '0px',
+      paddingTop: '8px',
+      paddingBottom: '12px',
+      paddingStart: '16px',
+      paddingEnd: '16px',
     },
   }))
 

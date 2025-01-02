@@ -15,7 +15,14 @@ export const doPost = (e: any) => {
 export const execute = (e: any) => {
   if (e.type === 'postback') {
     const postbackData = JSON.parse(e.postback.data)
-    handlePostback(postbackData.type, postbackData.currentId, '1-English')
+
+    switch (postbackData.sheet) {
+      case 'English':
+        handlePostback(postbackData.type, postbackData.currentId, '1-English')
+        break
+      default:
+        break
+    }
   } else if (e.type === 'message') {
     writeSheet(e.message.text, '6-WriteSheet')
   }

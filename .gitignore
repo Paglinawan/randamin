@@ -5,8 +5,8 @@ dist/*.js
 node_modules
 src/Post/*
 !src/Post/index.ts
-src/Tech
-src/TechMessages
+src/Words
+src/Messages
 .clasp.json
 package-lock.json
 yarn.lock

@@ -12,4 +12,3 @@ const getSendLanguages = (sheetName: string) => {
 }
 
 export const sendEnglish = () => getSendLanguages('1-English')
-export const sendTagalog = () => getSendLanguages('1-Tagalog')

@@ -1,7 +1,7 @@
 import { sendEnglish } from './English'
 import { Words } from './Words'
 import { Messages } from './Messages'
-import { archiveEnglish } from './Archive'
+import { doArchive } from './Archive'
 import { doPost } from './Post'
 
 declare const global: {
@@ -11,5 +11,5 @@ declare const global: {
 global.English = sendEnglish
 global.Words = Words
 global.Messages = Messages
-global.Archive = archiveEnglish
+global.doArchive = doArchive
 global.doPost = doPost

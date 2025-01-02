@@ -26,4 +26,6 @@ export const doArchive = () => {
   archiveRow('1-English', '1-ArchiveEnglish')
   archiveRow('2-Words', '2-ArchiveWords')
   archiveRow('3-Messages', '3-ArchiveMessages')
+  archiveRow('4-Articles', '4-ArchiveArticles')
+  archiveRow('5-Amazon', '5-ArchiveAmazon')
 }

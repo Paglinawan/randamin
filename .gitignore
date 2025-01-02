@@ -7,6 +7,8 @@ src/Post/*
 !src/Post/index.ts
 src/Words
 src/Messages
+src/Articles
+src/Amazon
 .clasp.json
 package-lock.json
 yarn.lock

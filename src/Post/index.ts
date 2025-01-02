@@ -26,6 +26,12 @@ export const execute = (e: any) => {
       case 'Messages':
         handlePostback(postbackData.type, postbackData.currentId, '3-Messages')
         break
+      case 'Articles':
+        handlePostback(postbackData.type, postbackData.currentId, '4-Articles')
+        break
+      case 'Amazon':
+        handlePostback(postbackData.type, postbackData.currentId, '5-Amazon')
+        break
       default:
         break
     }

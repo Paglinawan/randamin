@@ -46,6 +46,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 type: 'postback',
                 label: '▼',
                 data: JSON.stringify({
+                  sheet: 'English',
                   type: 'lowerVisibility',
                   currentId: id + 1,
                 }),
@@ -59,6 +60,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 type: 'postback',
                 label: '▲',
                 data: JSON.stringify({
+                  sheet: 'English',
                   type: 'raiseVisibility',
                   currentId: id + 1,
                 }),
@@ -70,7 +72,11 @@ const createCard = (data: DataType[]): FlexMessage[] => {
               type: 'button',
               action: {
                 type: 'postback',
-                data: JSON.stringify({ type: 'Done', currentId: id + 1 }),
+                data: JSON.stringify({
+                  sheet: 'English',
+                  type: 'Done',
+                  currentId: id + 1,
+                }),
                 label: '✔',
               },
               style: 'secondary',

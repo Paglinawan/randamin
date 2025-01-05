@@ -53,7 +53,8 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                       data: JSON.stringify({
                         sheet: 'English',
                         type: 'lowerVisibility',
-                        currentId: id + 1,
+                        id: id + 1,
+                        label: String(original),
                       }),
                     },
                     style: 'secondary',
@@ -67,7 +68,8 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                       data: JSON.stringify({
                         sheet: 'English',
                         type: 'raiseVisibility',
-                        currentId: id + 1,
+                        id: id + 1,
+                        label: String(original),
                       }),
                     },
                     style: 'secondary',
@@ -80,7 +82,8 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                       data: JSON.stringify({
                         sheet: 'English',
                         type: 'Done',
-                        currentId: id + 1,
+                        id: id + 1,
+                        label: String(original),
                       }),
                       label: '✔',
                     },

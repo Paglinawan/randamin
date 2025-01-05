@@ -18,19 +18,44 @@ export const execute = (e: any) => {
 
     switch (postbackData.sheet) {
       case 'English':
-        handlePostback(postbackData.type, postbackData.currentId, '1-English')
+        handlePostback(
+          postbackData.type,
+          postbackData.id,
+          '1-English',
+          postbackData.label,
+        )
         break
       case 'Words':
-        handlePostback(postbackData.type, postbackData.currentId, '2-Words')
+        handlePostback(
+          postbackData.type,
+          postbackData.id,
+          '2-Words',
+          postbackData.label,
+        )
         break
       case 'Messages':
-        handlePostback(postbackData.type, postbackData.currentId, '3-Messages')
+        handlePostback(
+          postbackData.type,
+          postbackData.id,
+          '3-Messages',
+          postbackData.label,
+        )
         break
       case 'Articles':
-        handlePostback(postbackData.type, postbackData.currentId, '4-Articles')
+        handlePostback(
+          postbackData.type,
+          postbackData.id,
+          '4-Articles',
+          postbackData.label,
+        )
         break
       case 'Amazon':
-        handlePostback(postbackData.type, postbackData.currentId, '5-Amazon')
+        handlePostback(
+          postbackData.type,
+          postbackData.id,
+          '5-Amazon',
+          postbackData.label,
+        )
         break
       default:
         break
@@ -40,12 +65,17 @@ export const execute = (e: any) => {
   }
 }
 
-const handlePostback = (type: string, currentId: number, sheetName: string) => {
+const handlePostback = (
+  type: string,
+  currentId: number,
+  sheetName: string,
+  label: string,
+) => {
   if (type === 'Done') {
-    doDone(currentId, sheetName)
+    doDone(currentId, sheetName, label)
   } else if (type === 'lowerVisibility') {
-    doLowerVisibility(currentId, sheetName)
+    doLowerVisibility(currentId, sheetName, label)
   } else if (type === 'raiseVisibility') {
-    doRaiseVisibility(currentId, sheetName)
+    doRaiseVisibility(currentId, sheetName, label)
   }
 }

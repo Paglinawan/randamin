@@ -3,8 +3,7 @@
 bin
 dist/*.js
 node_modules
-src/Post/*
-!src/Post/index.ts
+src/Post/writeSheet.ts
 src/Words
 src/Messages
 src/Articles

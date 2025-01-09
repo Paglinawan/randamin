@@ -7,7 +7,7 @@ src/Post/writeSheet.ts
 src/Words
 src/Messages
 src/Articles
-src/Amazon
+src/Books
 .clasp.json
 package-lock.json
 yarn.lock

@@ -1,25 +1,29 @@
 import getSheetData from '../utils/spreadsheet'
 
 const archiveRow = (originalSheetName: string, archiveSheetName: string) => {
-  const sheetData = getSheetData(originalSheetName)
-  const doneIds = sheetData
-    .filter((item) => item.done === true)
-    .map((item) => item.id)
-
   const originalSheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName(originalSheetName)
   const archiveSheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName(archiveSheetName)
+  if (!originalSheet || !archiveSheet) return
 
-  doneIds.forEach((id) => {
-    if (originalSheet && archiveSheet) {
-      const data = originalSheet
-        .getRange(id, 1, 1, originalSheet.getLastColumn())
-        .getValues()
-      archiveSheet.appendRow(data[0])
-      originalSheet.deleteRow(id)
-    }
+  const sheetData = getSheetData(originalSheetName)
+  const deleteRows = sheetData
+    .filter((item) => item.done === true)
+    .map((item) => item.id + 1)
+  if (deleteRows.length < 1) return
+
+  deleteRows.forEach((row) => {
+    const data = originalSheet
+      .getRange(row, 1, 1, originalSheet.getLastColumn())
+      .getValues()[0]
+    archiveSheet.appendRow(data)
   })
+  deleteRows
+    .sort((a, b) => b - a)
+    .forEach((rowIndex) => {
+      originalSheet.deleteRow(rowIndex)
+    })
 }
 
 export const doArchive = () => {

@@ -91,7 +91,6 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                     height: 'sm',
                   },
                 ],
-                maxWidth: '180px',
                 spacing: 'md',
               },
             ],

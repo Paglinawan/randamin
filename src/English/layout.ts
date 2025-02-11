@@ -57,7 +57,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         label: String(original),
                       }),
                     },
-                    style: 'secondary',
+                    style: 'primary',
                     height: 'sm',
                   },
                   {
@@ -72,7 +72,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         label: String(original),
                       }),
                     },
-                    style: 'secondary',
+                    style: 'primary',
                     height: 'sm',
                   },
                   {
@@ -85,7 +85,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         id: id + 1,
                         label: String(original),
                       }),
-                      label: '✔',
+                      label: '✗',
                     },
                     style: 'secondary',
                     height: 'sm',

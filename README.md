@@ -5,6 +5,7 @@
 - [【GAS中級編】TSで書くLINE Botハンズオン！【BOT AWARDS 2024】](https://www.youtube.com/watch?v=y_OWTt5E_OE)
 - [Messaging APIリファレンス](https://developers.line.biz/ja/reference/messaging-api/)
 - [FLEX MESSAGE SIMULATOR](https://developers.line.biz/flex-simulator)
+- [Figma](https://www.figma.com/community/file/1471489924127768493)
 
 <br>
 

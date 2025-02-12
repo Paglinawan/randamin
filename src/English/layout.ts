@@ -43,62 +43,86 @@ const createCard = (data: DataType[]): FlexMessage[] => {
             contents: [
               {
                 type: 'box',
-                layout: 'horizontal',
+                layout: 'vertical',
                 contents: [
                   {
-                    type: 'button',
-                    action: {
-                      type: 'postback',
-                      label: '▼',
-                      data: JSON.stringify({
-                        sheet: 'English',
-                        type: 'lowerVisibility',
-                        id: id + 1,
-                        label: String(original),
-                      }),
-                    },
-                    style: 'primary',
-                    height: 'sm',
-                  },
-                  {
-                    type: 'button',
-                    action: {
-                      type: 'postback',
-                      label: '▲',
-                      data: JSON.stringify({
-                        sheet: 'English',
-                        type: 'raiseVisibility',
-                        id: id + 1,
-                        label: String(original),
-                      }),
-                    },
-                    style: 'primary',
-                    height: 'sm',
-                  },
-                  {
-                    type: 'button',
-                    action: {
-                      type: 'postback',
-                      data: JSON.stringify({
-                        sheet: 'English',
-                        type: 'Done',
-                        id: id + 1,
-                        label: String(original),
-                      }),
-                      label: '✗',
-                    },
-                    style: 'secondary',
-                    height: 'sm',
+                    type: 'box',
+                    layout: 'horizontal',
+                    spacing: 'sm',
+                    alignItems: 'flex-end',
+                    justifyContent: 'flex-end',
+                    contents: [
+                      {
+                        type: 'box',
+                        layout: 'vertical',
+                        maxWidth: '40px',
+                        contents: [
+                          {
+                            type: 'image',
+                            url: 'https://thumbs.lateensail.net/line/randamin-button-archive.jpg',
+                            aspectMode: 'fit',
+                          },
+                        ],
+                        action: {
+                          type: 'postback',
+                          label: 'action',
+                          data: JSON.stringify({
+                            sheet: 'English',
+                            type: 'Done',
+                            id: id + 1,
+                            label: String(original),
+                          }),
+                        },
+                      },
+                      {
+                        type: 'box',
+                        layout: 'vertical',
+                        maxWidth: '56px',
+                        contents: [
+                          {
+                            type: 'image',
+                            url: 'https://thumbs.lateensail.net/line/randamin-button-decrease.jpg',
+                            aspectMode: 'fit',
+                          },
+                        ],
+                        action: {
+                          type: 'postback',
+                          label: 'action',
+                          data: JSON.stringify({
+                            sheet: 'English',
+                            type: 'lowerVisibility',
+                            id: id + 1,
+                            label: String(original),
+                          }),
+                        },
+                      },
+                      {
+                        type: 'box',
+                        layout: 'vertical',
+                        maxWidth: '56px',
+                        contents: [
+                          {
+                            type: 'image',
+                            url: 'https://thumbs.lateensail.net/line/randamin-button-increase.jpg',
+                            aspectMode: 'fit',
+                          },
+                        ],
+                        action: {
+                          type: 'postback',
+                          label: 'action',
+                          data: JSON.stringify({
+                            sheet: 'English',
+                            type: 'raiseVisibility',
+                            id: id + 1,
+                            label: String(original),
+                          }),
+                        },
+                      },
+                    ],
                   },
                 ],
-                spacing: 'md',
               },
             ],
-            alignItems: 'flex-end',
-            paddingTop: '8px',
-            paddingBottom: '12px',
-            paddingStart: '16px',
-            paddingEnd: '16px',
           }
 
           return {

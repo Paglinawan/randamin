@@ -1,5 +1,5 @@
 import { FlexMessage, FlexBubble } from '@line/bot-sdk'
-import { textStyle } from '../constants/semantic-colors'
+import { textColor } from '../constants/semantic-colors'
 type DataType = { id: number; [key: string]: string | number | boolean }
 
 const createCard = (data: DataType[]): FlexMessage[] => {
@@ -18,7 +18,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 type: 'text',
                 text: String(original),
                 size: 'lg',
-                color: textStyle.light.primary,
+                color: textColor.primary,
                 weight: 'bold',
                 wrap: true,
               },
@@ -26,7 +26,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 type: 'text',
                 text: String(translation),
                 size: 'xxs',
-                color: textStyle.light.gray,
+                color: textColor.subtle,
                 wrap: true,
               },
             ],

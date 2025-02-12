@@ -31,7 +31,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
               },
             ],
             paddingTop: '12px',
-            paddingBottom: '8px',
+            paddingBottom: '0px',
             paddingStart: '16px',
             paddingEnd: '16px',
             spacing: 'sm',
@@ -48,7 +48,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                   {
                     type: 'box',
                     layout: 'horizontal',
-                    spacing: 'sm',
+                    spacing: 'md',
                     alignItems: 'flex-end',
                     justifyContent: 'flex-end',
                     contents: [
@@ -59,7 +59,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/line/randamin-button-archive.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/button-archive.jpg',
                             aspectMode: 'fit',
                           },
                         ],
@@ -81,7 +81,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/line/randamin-button-decrease.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/button-decrease.jpg',
                             aspectMode: 'fit',
                           },
                         ],
@@ -103,7 +103,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/line/randamin-button-increase.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/button-increase.jpg',
                             aspectMode: 'fit',
                           },
                         ],

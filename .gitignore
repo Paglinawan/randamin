@@ -4,7 +4,6 @@ bin
 dist/*.js
 node_modules
 src/Post/writeSheet.ts
-src/Words
 src/Messages
 src/Articles
 src/Books

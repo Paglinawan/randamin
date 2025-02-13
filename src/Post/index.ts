@@ -41,11 +41,11 @@ export const execute = (e: any) => {
           postbackData.label,
         )
         break
-      case 'Articles':
+      case 'Resources':
         handlePostback(
           postbackData.type,
           postbackData.id,
-          '4-Articles',
+          '4-Resources',
           postbackData.label,
         )
         break

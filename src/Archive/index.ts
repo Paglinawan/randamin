@@ -30,6 +30,6 @@ export const doArchive = () => {
   archiveRow('1-English', '1-ArchiveEnglish')
   archiveRow('2-Words', '2-ArchiveWords')
   archiveRow('3-Messages', '3-ArchiveMessages')
-  archiveRow('4-Articles', '4-ArchiveArticles')
+  archiveRow('4-Resources', '4-ArchiveResources')
   archiveRow('5-Books', '5-ArchiveBooks')
 }

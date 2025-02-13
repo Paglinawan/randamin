@@ -5,7 +5,7 @@ dist/*.js
 node_modules
 src/Post/writeSheet.ts
 src/Messages
-src/Articles
+src/Resources
 src/Books
 .clasp.json
 package-lock.json

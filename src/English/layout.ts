@@ -59,7 +59,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/button-archive.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/btn-delete.svg',
                             aspectMode: 'fit',
                           },
                         ],
@@ -81,7 +81,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/button-decrease.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/btn-decrease.svg',
                             aspectMode: 'fit',
                           },
                         ],
@@ -103,7 +103,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                         contents: [
                           {
                             type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/button-increase.jpg',
+                            url: 'https://thumbs.lateensail.net/randamin/btn-increase.svg',
                             aspectMode: 'fit',
                           },
                         ],

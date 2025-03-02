@@ -13,7 +13,19 @@ const createCard = (data: DataType[]): FlexMessage[] => {
           const body: FlexBubble['body'] = {
             type: 'box',
             layout: 'vertical',
+            paddingTop: 'md',
+            paddingBottom: 'md',
+            paddingStart: 'lg',
+            paddingEnd: 'lg',
+            spacing: 'sm',
             contents: [
+              {
+                type: 'text',
+                text: 'ー English',
+                size: 'xxs',
+                color: textColor.subtle,
+                wrap: true,
+              },
               {
                 type: 'text',
                 text: String(original),
@@ -26,99 +38,92 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 type: 'text',
                 text: String(translation),
                 size: 'xxs',
-                color: textColor.subtle,
+                color: textColor.black,
                 wrap: true,
               },
             ],
-            paddingTop: '12px',
-            paddingBottom: '0px',
-            paddingStart: '16px',
-            paddingEnd: '16px',
-            spacing: 'sm',
           }
 
           const footer: FlexBubble['footer'] = {
             type: 'box',
             layout: 'vertical',
+            paddingTop: '0px',
+            paddingBottom: 'md',
+            paddingStart: 'lg',
+            paddingEnd: 'lg',
             contents: [
               {
                 type: 'box',
-                layout: 'vertical',
+                layout: 'horizontal',
+                spacing: 'md',
+                alignItems: 'flex-end',
+                justifyContent: 'flex-end',
                 contents: [
                   {
                     type: 'box',
-                    layout: 'horizontal',
-                    spacing: 'md',
-                    alignItems: 'flex-end',
-                    justifyContent: 'flex-end',
+                    layout: 'vertical',
+                    maxWidth: '40px',
                     contents: [
                       {
-                        type: 'box',
-                        layout: 'vertical',
-                        maxWidth: '40px',
-                        contents: [
-                          {
-                            type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/btn-delete.png',
-                            aspectMode: 'fit',
-                          },
-                        ],
-                        action: {
-                          type: 'postback',
-                          label: 'action',
-                          data: JSON.stringify({
-                            sheet: 'English',
-                            type: 'Done',
-                            id: id + 1,
-                            label: String(original),
-                          }),
-                        },
-                      },
-                      {
-                        type: 'box',
-                        layout: 'vertical',
-                        maxWidth: '56px',
-                        contents: [
-                          {
-                            type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/btn-decrease.png',
-                            aspectMode: 'fit',
-                          },
-                        ],
-                        action: {
-                          type: 'postback',
-                          label: 'action',
-                          data: JSON.stringify({
-                            sheet: 'English',
-                            type: 'lowerVisibility',
-                            id: id + 1,
-                            label: String(original),
-                          }),
-                        },
-                      },
-                      {
-                        type: 'box',
-                        layout: 'vertical',
-                        maxWidth: '56px',
-                        contents: [
-                          {
-                            type: 'image',
-                            url: 'https://thumbs.lateensail.net/randamin/btn-increase.png',
-                            aspectMode: 'fit',
-                          },
-                        ],
-                        action: {
-                          type: 'postback',
-                          label: 'action',
-                          data: JSON.stringify({
-                            sheet: 'English',
-                            type: 'raiseVisibility',
-                            id: id + 1,
-                            label: String(original),
-                          }),
-                        },
+                        type: 'image',
+                        url: 'https://thumbs.lateensail.net/randamin/btn-delete.png',
+                        aspectMode: 'fit',
                       },
                     ],
+                    action: {
+                      type: 'postback',
+                      label: 'action',
+                      data: JSON.stringify({
+                        sheet: 'English',
+                        type: 'Done',
+                        id: id + 1,
+                        label: String(original),
+                      }),
+                    },
+                  },
+                  {
+                    type: 'box',
+                    layout: 'vertical',
+                    maxWidth: '56px',
+                    contents: [
+                      {
+                        type: 'image',
+                        url: 'https://thumbs.lateensail.net/randamin/btn-decrease.png',
+                        aspectMode: 'fit',
+                      },
+                    ],
+                    action: {
+                      type: 'postback',
+                      label: 'action',
+                      data: JSON.stringify({
+                        sheet: 'English',
+                        type: 'lowerVisibility',
+                        id: id + 1,
+                        label: String(original),
+                      }),
+                    },
+                  },
+                  {
+                    type: 'box',
+                    layout: 'vertical',
+                    maxWidth: '56px',
+                    contents: [
+                      {
+                        type: 'image',
+                        url: 'https://thumbs.lateensail.net/randamin/btn-increase.png',
+                        aspectMode: 'fit',
+                      },
+                    ],
+                    action: {
+                      type: 'postback',
+                      label: 'action',
+                      data: JSON.stringify({
+                        sheet: 'English',
+                        type: 'raiseVisibility',
+                        id: id + 1,
+                        label: String(original),
+                      }),
+                    },
                   },
                 ],
               },

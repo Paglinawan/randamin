@@ -1,4 +1,4 @@
-import { FlexMessage, FlexBubble } from '@line/bot-sdk'
+import { FlexMessage, FlexBubble, FlexBox } from '@line/bot-sdk'
 import { textColor } from '../constants/semantic-colors'
 type DataType = { id: number; [key: string]: string | number | boolean }
 
@@ -18,12 +18,17 @@ const createCard = (data: DataType[]): FlexMessage[] => {
           const body: FlexBubble['body'] = {
             type: 'box',
             layout: 'vertical',
+            paddingTop: 'md',
+            paddingBottom: 'md',
+            paddingStart: 'lg',
+            paddingEnd: 'lg',
+            spacing: 'sm',
             contents: [
               {
                 type: 'text',
-                text: String(desc),
+                text: 'ー Word',
                 size: 'xxs',
-                color: textColor.black,
+                color: textColor.subtle,
                 wrap: true,
               },
               {
@@ -34,18 +39,22 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                 weight: 'bold',
                 wrap: true,
               },
+              {
+                type: 'text',
+                text: String(desc),
+                size: 'xxs',
+                color: textColor.black,
+                wrap: true,
+              },
             ],
-            paddingTop: '12px',
-            paddingBottom: '0px',
-            paddingStart: '16px',
-            paddingEnd: '16px',
-            spacing: 'sm',
           }
-          const footer: FlexBubble['footer'] & {
-            contents: { contents: any[] }[]
-          } = {
+          const footer: FlexBubble['footer'] = {
             type: 'box',
             layout: 'vertical',
+            paddingTop: '0px',
+            paddingBottom: 'md',
+            paddingStart: 'lg',
+            paddingEnd: 'lg',
             contents: [
               {
                 type: 'box',
@@ -126,7 +135,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
           }
 
           if (url) {
-            footer.contents[0].contents.splice(1, 0, {
+            ;(footer.contents[0] as FlexBox).contents.splice(1, 0, {
               type: 'box',
               layout: 'vertical',
               maxWidth: '40px',
